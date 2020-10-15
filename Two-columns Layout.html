@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		.left {
+			float: left;
+			width: 100px;
+			height: 100px;
+			background-color: cadetblue;
+		}
+		.right {
+			margin-left: 100px; /* 否则右侧元素将从父元素的最左侧开始 */
+			height: 100px;
+			background-color: bisque;
+		}
+
+		.left1 {
+			float: left;
+			/* width: 100px; */
+			height: 100px;
+			background-color: cadetblue;
+		}
+		.right1 {
+			overflow: hidden;
+			height: 100px;
+			background-color: bisque;
+		}
+		
+		.container {
+			display: flex;
+		}
+		.left2 {
+			flex: 0 1 auto;
+			/* width: 100px; */
+			height: 100px;
+			background-color: cadetblue;
+		}
+		.right2 {
+			flex-grow: 1;
+			height: 100px;
+			background-color: bisque;
+		}
+	</style>
+</head>
+<body>
+	<h3>流体布局</h3>
+	<div class="left">左侧定宽</div>
+	<div class="right">右侧宽度自适应</div>
+
+	<h3>BFC清除浮动</h3>
+	<div class="left1">左侧不定宽</div>
+	<div class="right1">右侧宽度自适应</div>
+	
+	<h3>Flex布局</h3>
+	<div class="container">
+		<div class="left2">左侧不定宽</div>
+		<div class="right2">右侧宽度自适应</div>
+	</div>
+</body>
+</html>

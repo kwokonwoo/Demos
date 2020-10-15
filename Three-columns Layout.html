@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		.left {
+			float: left;
+			width: 100px;
+			height: 100px;
+			background-color: cadetblue;
+		}
+		.mid {
+			margin: 0 100px; 
+			height: 100px;
+			background-color: bisque;
+		}
+		.right {
+			float: right;
+			width: 100px;
+			height: 100px;
+			background-color: cadetblue;
+		}
+
+		.left1 {
+			float: left;
+			/* width: 100px; */
+			height: 100px;
+			background-color: cadetblue;
+		}
+		.mid1 {
+			overflow: hidden;
+			height: 100px;
+			background-color: bisque;
+		}
+		.right1 {
+			float: right;
+			/* width: 100px; */
+			height: 100px;
+			background-color: cadetblue;
+		}
+		
+		.container2 {
+			display: flex;
+		}
+		.left2 {
+			height: 100px;
+			background-color: cadetblue;
+		}
+		.mid2 {
+			flex-grow: 1;
+			height: 100px;
+			background-color: bisque;
+		}
+		.right2 {
+			height: 100px;
+			background-color: cadetblue;
+		}
+
+		.container3 {
+			display: table;
+			width: 100%;
+		}
+		.left3, .mid3, .right3 {
+			display: table-cell;
+		} 
+		.left3 {
+			width: 100px;
+			height: 100px;
+			background-color: cadetblue;
+		}
+		.mid3 {
+			background-color: bisque;
+		}
+		.right3 {
+			width: 100px;
+			background-color: cadetblue;
+		}
+
+		.container4 {
+			position: relative;
+		}
+		.left4 {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100px;
+			height: 100px;
+			background-color: cadetblue;
+		}
+		.mid4 {
+			height: 100px;
+			margin:0 100px;
+			background-color: bisque;
+		}
+		.right4 {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 100px;
+			height: 100px;
+			background-color: cadetblue;
+		}
+	</style>
+</head>
+<body>
+	<h3>流体布局</h3>
+	<div>
+		<div class="left">左侧定宽</div>
+		<div class="right">右侧定宽</div>
+		<!-- 中间栏一定要放在最后，否则会导致浮动元素进入下一行 -->
+		<div class="mid">中间宽度自适应</div>
+	</div>
+
+
+	<h3>BFC三栏布局</h3>
+	<div>
+		<div class="left1">左侧不定宽</div>
+		<div class="right1">右侧不定宽</div>
+		<div class="mid1">中间宽度自适应</div>
+	</div>
+	
+	<h3>Flex布局</h3>
+	<div class="container2">
+		<div class="left2">左侧不定宽</div>
+		<div class="mid2">中间宽度自适应</div>
+		<div class="right2">右侧不定宽</div>
+	</div>
+
+	<h3>Table布局</h3>
+	<!-- 无法设置列间距 -->
+	<div class="container3">
+		<div class="left3">左侧定宽</div>
+		<div class="mid3">中间宽度自适应</div>
+		<div class="right3">右侧定宽</div>
+	</div>
+
+	<h3>绝对定位布局</h3>
+	<div class="container4">
+		<div class="left4">左侧定宽</div>
+		<div class="mid4">中间宽度自适应</div>
+		<div class="right4">右侧定宽</div>
+	</div>
+
+	<h3>总结</h3>
+	<p>定宽布局是不定宽布局的子集，凡是只能定宽的都是因为要给左右栏留位置或者处于Table布局的特殊性。涉及浮动时尤其要注意HTML的顺序。</p>
+</body>
+</html>

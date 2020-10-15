@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Copatible" contennt="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+        
+        <title>Promise example</title>
+
+        <link rel="stylesheet" href="">
+    </head>
+    
+    <body>
+        <h1>Promise example</h1>
+
+        <p></p>
+    </body>
+
+    <script>
+    function imgLoad(url) {
+        // 通过Promise()构造器创建新的promise，接收带有两个形参的实参
+        return new Promise(function(resolve, reject) {
+            // XHR加载图片
+            var request = new XMLHttpRequest();
+            request.open('GET', url);
+            request.responseType = 'blob';
+            // 检查加载是否成功
+            request.onload = function() {
+                if (request.status === 200) {
+                    resolve(request.response);    
+                } else {
+                    reject(Error('Image didn\'t load successfully; error code:' + request.statusText));
+                }
+            };
+            request.onerror = function() {
+            // 当整个请求开始就失败时    
+                reject(Error('There was a network error.'));
+            };
+            // 发送请求
+            request.send();
+        })
+    }
+    var body = document.querySelector('body');
+    var myImage = new Image();
+    imgLoad('myLittleVader.jpg').then(function(response) {
+        var imageURL = window.URL.createObjectURL(response);
+        myImage.src = imageURL;
+        body.appendChild(myImage);
+    }, function(Error) {
+        console.log(Error)
+    });
+    </script>
+</html>

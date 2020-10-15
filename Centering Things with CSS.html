@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Centering Things with CSS3</title>
+    <style>
+        div.container1 {
+            height: 10em;
+            position: relative;
+        }
+        div.container1 p {
+            margin: 0;
+            background: yellow;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%; /*https://www.w3.org/Style/Examples/007/center.en.html */
+            transform: translate(-50%, -50%);
+            /* fixed width(border-box) and height:
+            margin-left: -width/2;
+            margin-top: -height/2;
+            */
+        }
+
+        div.container2 {
+            height: 10em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        div.container2 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class=container1>
+        <p>Centered!</p>
+    </div>
+    <div class=container2>
+        <p>Centered!</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row; /* row | row-reverse | column | column-reverse */
+            flex-wrap: wrap; /* nowrap | wrap | wrap-reverse */
+            /* flex-flow: <‘flex-direction’> || <‘flex-wrap’> */
+            justify-content: space-evenly; /* flex-start | flex-end | center | space-between |space-around | space-evenly */
+            /* align-items: center; */ /* stretch | flex-start | flex-end | center | baseline */
+            align-content: center;
+            height: 600px;
+        }
+        .flex-items {
+            /* flex-shrink: 1; */
+            border: 3px solid skyblue;
+            /* width: 100px; */
+            height: 100px; /* No such value, "stretch" will stretch the item to the height of its parent */ 
+            margin: 10px;
+            line-height: 100px; 
+            text-align: center;
+        }
+        .bigger-box {
+            /* flex-shrink: 0; */
+            order: -1;
+            /* width: 200px; */
+            height: 200px;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="flex-items">item1</div>
+        <div class="flex-items bigger-box">item2</div>
+        <div class="flex-items">item3</div>
+        <div class="flex-items">item4</div>
+        <div class="flex-items">item5</div>
+        <div class="flex-items">item6</div>
+        <div class="flex-items">item7</div>
+        <div class="flex-items">item8</div>
+        <div class="flex-items">item9</div>
+        <div class="flex-items">item10</div>
+        <div class="flex-items">ite11</div>
+        <div class="flex-items">item12</div>
+        <div class="flex-items">item13</div>
+        <div class="flex-items">item14</div>
+        <div class="flex-items">item15</div>
+    </div>
+    
+</body>
+</html>
