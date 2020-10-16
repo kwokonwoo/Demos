@@ -3,4 +3,7 @@ Demos for HTML&CSS&**JavaScript** etc.
 - [Centering Things with CSS](centering-things-with-CSS.html)
 - [CSS Loading Icon](CSS-loading-icon.html)
 - [Two Columns Layout](two-columns-layout.html)
+- [Three Columns Layout](three-columns-layout.html)
 - [A Simple AJAX](a-simple-AJAX/a-simple-AJAX.html)
+- [CSS Flexible Box Layout](CSS-flexible-box-layout.html)
+- [Loading an Image with XHR](loading-an-image-with-XHR\loading-an-image-with-XHR.html)

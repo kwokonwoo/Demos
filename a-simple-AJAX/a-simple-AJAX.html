@@ -5,53 +5,35 @@
     <title>AJAX example</title>
 </head>
 <body>
-    <button id="ajaxButton" type="button">Make a request</button>
-    <br/>
-    <label>Your name:
-        <input type="text" id="ajaxTextbox" />
-    </label>
-    <span id="ajaxButton" style="cursor: pointer; text-decoration: underline">
-        Make another request
-    </span>
+<button id="ajaxButton" type="button">Make a request</button>
 
-    <script>
-        (function() {
-            var httpRequest;
-            document.getElementById("ajaxButton").addEventListener('click', makeRequest);
+<script>
+(function() {
+    var httpRequest;
+    document.getElementById("ajaxButton").addEventListener('click', makeRequest);
 
-            document.getElementById("ajaxButton").onclick = function() {
-                var userName = document.getElementById("ajaxText").value;
-                makeRequest('test.php', userName);
-            }
-            
-            function makeRequest(url, userName) {
-                httpRequest = new XMLHttpRequest();
+    function makeRequest() {
+    httpRequest = new XMLHttpRequest();
 
-                if (!httpRequest) {
-                    alert('放弃咯 :( 无法创建XMLHTTP实例');
-                    return false;
-                }
-                httpRequest.onreadystatechange = alertContents;
-                httpRequest.open('POST', url);
-                httpRequest.setRequestHeader('Content-type', 'application/x-www.form-urlencoded')
-                httpRequest.send('userName=' + encodeURIComponent(userName));
-            }
+    if (!httpRequest) {
+        alert('Giving up :( Cannot create an XMLHTTP instance');
+        return false;
+    }
+    httpRequest.onreadystatechange = alertContents;
+    httpRequest.open('GET', 'test.html');
+    httpRequest.send();
+    }
 
-            function alertContents() {
-                try {
-                    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                        if (httpRequest.status === 200) {
-                            alert(httpRequest.responseText);
-                        } else {
-                            alert('请求出问题了')
-                        }
-                    }
-                }
-                catch( e ) {
-                    alert('Caught Exception: ' + e.description);
-                }
-            }
-        })();
-    </script>
+    function alertContents() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+        alert(httpRequest.responseText);
+        } else {
+        alert('There was a problem with the request.');
+        }
+    }
+    }
+})();
+</script>
 </body>
 </html>
