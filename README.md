@@ -7,3 +7,5 @@ Demos for HTML&CSS&**JavaScript** etc.
 - [A Simple AJAX](a-simple-AJAX/a-simple-AJAX.html)
 - [CSS Flexible Box Layout](CSS-flexible-box-layout.html)
 - [Loading an Image with XHR](loading-an-image-with-XHR\loading-an-image-with-XHR.html)
+- [CSS Triangle](CSS-triangle.html)
+- [Debounce and Throttle](debounce-throttle.html)

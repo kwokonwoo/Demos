@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <label>普通的输入框:</label> <input id="normal" type="text">
+    <br>
+    <label>防抖的输入框:</label> <input id="debounce" type="text">
+    <br>
+    <label>节流的输入框:</label> <input id="throttle" type="text">
+    <br>
+    <a href="https://programmingwithmosh.com/javascript/javascript-throttle-and-debounce-patterns/" target="_blank">JavaScript patterns: Throttle and Debounce</a>
+    <script>
+    // 模拟ajax请求
+    function ajax(content) {
+        console.log('调用了一次ajax函数 ' + content);
+    }
+      
+    let normalInput = document.getElementById('normal');
+
+    normalInput.addEventListener('keyup', function (e) {
+            ajax(e.target.value)
+    })
+    </script>
+
+    <script>
+    function debounce(callback, delay) {
+        let timeoutId;
+        return function(...args) {
+            clearTimeout(timeoutId);
+            console.log('清理了一次计时器');
+            timeoutId = setTimeout(() => callback.apply(this, args), delay); // 确保上下文环境为当前的this
+        };
+    }
+        
+    let input = document.getElementById('debounce');
+
+    let debounceAjax = debounce(ajax, 500);
+
+    input.addEventListener('keyup', function (e) {
+            debounceAjax(e.target.value)
+    })
+    </script>
+
+    <script>
+    function throttle(callback, interval) {
+        let enableCall = true;
+        
+        return function(...args) {
+            if (!enableCall) return;
+
+            enableCall = false;
+            callback.apply(this, args);
+            setTimeout(() => enableCall = true, interval);
+        }
+    }
+
+    let throttleAjax = throttle(ajax, 500);
+
+    let throttleInput = document.getElementById('throttle');
+
+    throttleInput.addEventListener('keyup', function(e) {
+        throttleAjax(e.target.value)
+    })
+    </script>
+</body>
+</html>

@@ -28,6 +28,47 @@
             /* height: 20px; */
 
         }
+
+        section {
+            display: flex;
+            width: 800px;
+            border: 2px solid darkcyan;
+        }
+        .left-side {
+            flex-grow: 1;
+            width: 200px;
+            background-color: skyblue;
+        }
+        .content {
+            flex-grow: 2;
+            width: 200px;
+            background-color: darkcyan;
+        }
+        .right-side {
+            flex-grow: 3;
+            width: 200px;
+            height: 100px;
+            background-color: skyblue;
+        }
+
+
+        .left {
+            flex-shrink: 1;
+            width: 300px;
+            background-color: skyblue;
+        }
+        .mid {
+            flex-shrink: 2;
+            width: 300px;
+            background-color: darkcyan;
+        }
+        .right {
+            flex-shrink: 3;
+            width: 300px;
+            height: 100px;
+            background-color: skyblue;
+        }
+
     </style>
 </head>
 <body>
@@ -42,5 +83,20 @@
         <div class="flex-items"></div>
         <div class="flex-items"></div>
     </div>
+
+    <h3>flex-grow和flex-shrink</h3>
+    <section>
+        <div class="left-side"><b>flex-grow=1</b>; growing space：remaining space(150px)*flex-grow/sum(flex-grow)(>=1)</div>
+        <div class="content"><b>flex-grow=2</b>; growing space：remaining space(150px)*flex-grow/sum(flex-grow)(>=1)</div>
+        <div class="right-side"><b>flex-grow=3</b>; growing space：remaining space(150px)*flex-grow/sum(flex-grow)(>=1)</div>
+    </section>
+    <br>
+    <section>
+        <div class="left"><b>flex-shrink=1</b>; shrinking space: 溢出量*flex-shrink*width/总权重(各个item shrink的值乘以其宽度的和)</div>
+        <div class="mid">flex-shrink=2</div>
+        <div class="right">flex-shrink=3</div>
+    </section>
+    <p>当flex-grow或flex-shrink的值小于1的时候，其增长或收缩的比例为flex-grow或flex-shrink之和相对于1的比例的空间。</p>
+    <p>当flex-grow或flex-shrink的和大于等于1的时候，grow的值越大，增长的空间越大；而收缩的空间则取决于shrink的值与该item宽度的乘积有关，乘积越大，收缩的越多。</p>
 </body>
 </html>

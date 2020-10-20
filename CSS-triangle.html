@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Triangle</title>
+    <style>
+        .triangle-down {
+            width: 10px;
+            height: 10px;
+            border-left: 25px solid red;
+            border-right: 25px solid orange;
+            border-top: 25px solid purple;
+            border-bottom: 25px solid black;
+            margin: auto;
+        }
+
+        .triangle-up {
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 30px solid black;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="triangle-down"></div>
+    <br>
+    <div class="triangle-up"></div>
+    <p style="text-align: center;">箭头向上，则将相对的下边框显示出来，两侧设为透明，宽高为0。border宽度则为三角形高度。</p>
+</body>
+</html>
