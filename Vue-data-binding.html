@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  Name: <span id="getName"></span>
+  <br>
+  <input type="text" id="setName">
+  <ul>
+    <li>Vue 2.x数据双向绑定
+      <ul>
+        <li>当更改数据时，视图会随之改变。反之亦然。</li>
+        <li>Vue2.x利用ES5的Object.defineProperty方法修改对象的get、set属性，实现数据劫持</li>
+        <li>缺点
+          <ul>
+            <li>需要克隆原始数据</li>
+            <li>需要分别监听对象中的每个属性</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Vue 3.0利用ES6的Proxy实现数据双向绑定</li>
+  </ul>
+  <script>
+    let data = {
+      name: ''
+    };
+    let dataCopy = JSON.parse(JSON.stringify(data)); // 防止循环引用
+    Object.defineProperty(data, 'name', {
+      get(){
+        return dataCopy.name;
+      },
+      set(value) { // 数据更改，影响视图
+        if (value === dataCopy.name) return;
+        dataCopy.name = value;
+        observer();
+      }
+    });
+
+    function observer() { // 更改视图
+      getName.innerHTML = data.name;
+      setName.value = data.name;
+    }
+
+    setName.oninput = function() { // 监听视图，视图更改，数据改变，触发observer执行，更改视图
+      data.name = this.value;
+    }
+  </script>
+  <script>
+    let obj = {};
+    obj = new Proxy(obj, {
+      get(target, prop) {
+        return target[prop];
+      },
+      set(target, prop, value) {
+        target[prop] = value;
+        observer();
+      }
+    });
+
+    function observer() {
+      getName.innerHTML = obj.name;
+      setName.value = obj.name;
+    }
+
+    setName.oninput = function() {
+      obj.name = this.value;
+    };
+
+  </script>
+</body>
+</html>
