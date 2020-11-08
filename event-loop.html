@@ -38,6 +38,7 @@
   <ul>
     <li>定时器、事件绑定是宏任务</li>
     <li>Promise、async和await是微任务</li>
+    <li>微任务跟在当前宏任务后面，执行完当前宏任务，立即其微任务，然后再执行下一个宏任务。</li>
   </ul>
   <script>
     async function async1() {
