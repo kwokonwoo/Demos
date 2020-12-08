@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+</head>
+<body>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答案见控制台</p>
+  <pre>
+    <code class="prettyprint">
+      async function async1() {
+        console.log('async1 start: ');
+        await async2();
+        console.log('async1 end');
+      }
+
+      async function async2() {
+        console.log('async2');
+      }
+
+      console.log('script start');
+      setTimeout(function() {
+        console.log('setTimeout');
+      }, 0)
+
+      async1();
+
+      new Promise(function(resolve) {
+        console.log('promise executor');
+        resolve();
+      }).then(function() {
+        console.log('promise resolved');
+      });
+
+      console.log('script end');
+    </code>
+  </pre>
+  <ul>
+    <li>定时器、事件绑定是宏任务</li>
+    <li>Promise、async和await是微任务</li>
+    <li>微任务跟在当前宏任务后面，执行完当前宏任务，立即其微任务，然后再执行下一个宏任务。</li>
+  </ul>
+  <script>
+    async function async1() {
+      console.log('async1 start: 函数调用同步执行');
+      await async2(); // 执行async2，等待返回结果再继续执行（微任务）
+      console.log('async1 end: 这是一个微任务');
+    }
+    async function async2() {
+      console.log('async2: 函数调用同步执行');
+    }
+    console.log('script start: 同步执行');
+    setTimeout(function() {
+      console.log('setTimeout: 这是一个宏任务');
+    }, 0)
+    async1();
+    new Promise(function(resolve) {
+      console.log('promise executor: 同步执行');
+      resolve();
+    }).then(function() {
+      console.log('promise resolved: 这是一个微任务');
+    });
+    console.log('script end: 同步执行');
+  </script>
+</body>
+</html>
