@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+</head>
+<body>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答案见控制台</p>
+    <pre>
+        <code class="prettyprint">
+            function Foo() {
+                getName = function() {
+                    console.log(1);
+                }
+                return this;
+            }
+
+            Foo.getName = function () {
+                console.log(2);
+            }
+
+            Foo.prototype.getName = function () {
+                console.log(3);
+            }
+
+            var getName = function () {
+                console.log(4);
+            }
+
+            function getName() {
+                console.log(5);
+            }
+              
+            考虑以下输出结果:
+            Foo.getName();
+            getName();
+            Foo().getName();
+            getName();
+            new Foo.getName();
+            new Foo().getName();
+            new new Foo().getName();
+        </code>
+    </pre>
+    <ul>
+        <li>变量提升不赋值，而函数整体都提升，可以在声明之前使用该函数</li>
+        <li>函数也是对象，因此可以添加属性</li>
+        <li>变量getName在赋值时覆盖掉了之前被提升的函数getName</li>
+        <li>成员访问和new操作符优先级</li>
+    </ul>
+    <script>
+        function Foo() {
+            getName = function () { console.log(1); };
+            return this;
+        }
+        Foo.getName = function () { console.log(2); };
+        Foo.prototype.getName = function () { console.log(3); };
+        var getName = function () { console.log(4); };
+        function getName() { console.log(5); }
+
+        Foo.getName();
+        getName();
+        Foo().getName();
+        getName();
+        new Foo.getName();
+        new Foo().getName();
+        new new Foo().getName();
+    </script>
+</body>
+</html>
