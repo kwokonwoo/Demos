@@ -11,5 +11,5 @@ Demos for HTML&CSS&**JavaScript** etc.
 - [Debounce and Throttle](debounce-throttle.html)
 - [Vue Data Binding](Vue-data-binding.html)
 - [Event Loop](event-loop.html)
-- [Function Excutor and Operator Precedence](function-excutor-and-operator-precedence.html)
+- [Function Excutor and Operator Precedence](function-executor-and-operator-precedence.html)
 - [something]
